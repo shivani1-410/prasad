@@ -1,22 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My First Webpage</title>
-</head>
-<body>
+//mavel pom.xml file
 
-    <h1>Welcome to My Webpage</h1>
-    <p>This is a simple HTML page example.</p>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>MyAapp</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>MyAapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+  <maven.compiler.source>8</maven.compiler.source>
+  <maven.compiler.target>8</maven.compiler.target>
+  </properties>
+  <dependencies>    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+  <plugins>
+     <plugin>
+       <groupId>org.codehaus.mojo</groupId>
+       <artifactId>exec-maven-plugin</artifactId>
+       <version>3.0.0</version>
+       <executions>
+          <execution>
+            <goals>
+              <goal>java </goal>
+             </goals>
+          </execution>
+        </executions>
+     <configuration>
+       <mainClass>com.example.App</mainClass>
+    </configuration>
+    </plugin>
+ </plugins>
+</build>   
+</project>
 
-    <h2>About HTML</h2>
-    <p>HTML stands for <b>HyperText Markup Language</b>. It is used to create webpages.</p>
 
-    <h3>List Example</h3>
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-    </ul>
 
-</body>
-</html>
+//docker(dockerfile)
+FROM httpd:2.4
+COPY index.html/User/local/apache2/htdocs/
+
+
+mvn archetype:generate -DgroupId=com.example -DartifactId=MyApp -DinteractiveMode=false
